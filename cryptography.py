@@ -57,13 +57,35 @@ def crack_code(plain):
 
     return decryp(plain,key_with_max_words)
 
+def is_broken(plain):
+    """
+    Method that try to identify if a code is broken
+    """
+    word_list = words.words()
+    
+    plain_list = plain.split(' ')
+    num_plain_list = len(plain_list)
+
+    founded_words = 0
+    for word in plain_list:
+        # print (word)
+        word = word.replace(',','')
+        word = word.replace('.','')
+        word.strip()
+        word.lower()
+        print (word)
+        if word in word_list: 
+            print ('found' ,word)
+            founded_words += 1                
+
+    return f'Only {founded_words} from {num_plain_list} words where recognized. There is a {founded_words/num_plain_list} chance of being broken.'
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
     # # text = 'Iris Leal is my name 41 xyz'
     # # text = 'ABCDEFG'
     # # text = 'I'
-    # # text = 'It was the best of times, it was the worst of times.'
+    # text = 'It was the best of times, it was the worst of times.'
     # text = 'Filter common words from documents'
     # key= 13
     # code = encrypt(text,key)
@@ -73,4 +95,6 @@ def crack_code(plain):
     # # print (decode)
     # # print(decryp(code))
     # print(crack_code(code))
-
+    # text = 'some uh when jds said'
+    # print(is_broken(text))
+#It dont found
