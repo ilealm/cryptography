@@ -45,45 +45,32 @@ def crack_code(plain):
     max_words_found = 0
     plain_words = plain.split(' ')
 
-    for index in range (26):
-        # this is the counter of words in this round
+    for index in range (52):
         founded_words_per_index = 0
         for word in plain_words:
             decryp_word = decryp(word, index)
             if decryp_word in word_list: 
                 founded_words_per_index += 1
-                print('I found this word in the list', decryp_word, ' in round ', index)
         if founded_words_per_index > max_words_found:
-            print('Change values from ', founded_words_per_index, ' to ', max_words_found)
             max_words_found = founded_words_per_index
             key_with_max_words = index
-            print('NEW values from ', founded_words_per_index, ' to ', max_words_found, ' index: ', index)
 
-
-    # i know i can have move 26 switchs
-
-    # for each word, i will create a new word moving from 0-26 Position
-    # i will see if the word exist, if so, i will have a words_existing_count for each iteration
-
-    # will return the iterations with more words existing 
-        # word_list = words.words()
-        # print(word_list[0:10])
-    print('key_with_max_words ', key_with_max_words)
     return decryp(plain,key_with_max_words)
 
 
 
-if __name__ == "__main__":
-    # text = 'Iris Leal is my name 41 xyz'
-    # text = 'ABCDEFG'
-    # text = 'I'
-    text = 'It was the best of times, it was the worst of times.'
-    key= 13
-    code = encrypt(text,key)
-    # print(text)
-    print('the code is: ', code )
-    # decode = decryp(code, key)
-    # print (decode)
-    # print(decryp(code))
-    print(crack_code(code))
+# if __name__ == "__main__":
+    # # text = 'Iris Leal is my name 41 xyz'
+    # # text = 'ABCDEFG'
+    # # text = 'I'
+    # # text = 'It was the best of times, it was the worst of times.'
+    # text = 'Filter common words from documents'
+    # key= 13
+    # code = encrypt(text,key)
+    # print('Original text', text)
+    # print('the code is: ', code )
+    # # decode = decryp(code, key)
+    # # print (decode)
+    # # print(decryp(code))
+    # print(crack_code(code))
 
