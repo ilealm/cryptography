@@ -27,8 +27,6 @@ def encrypt(plain, key):
             new_possition = (alphabet_possition + int(key)) % 52 # % 26
             new_letter = getAlfabethLetter(new_possition)
             encrypt_msg += new_letter
-            # print('Position of ', ch, ' is ', alphabet_possition, ' new position: ', new_possition, ' new_letter: ', new_letter)
-
     return encrypt_msg
 
 
@@ -40,7 +38,6 @@ def decryp(plain, key):
 
 def crack_code(plain):
     word_list = words.words()
-    # print(word_list[0:10])
     key_with_max_words = 0
     max_words_found = 0
     plain_words = plain.split(' ')
@@ -68,13 +65,11 @@ def is_broken(plain):
 
     founded_words = 0
     for word in plain_list:
-        # print (word)
         word = word.replace(',','')
         word = word.replace('.','')
         word.strip()
         word.lower()
         if word in word_list: 
-            # print ('found' ,word)
             founded_words += 1        
 
     if founded_words == num_plain_list:
@@ -84,21 +79,3 @@ def is_broken(plain):
 
     return f'Only {founded_words} from {num_plain_list} words where recognized. There is a { porcentage } % chance of being broken.'
 
-
-# if __name__ == "__main__":
-#     text = 'Iris Leal is my name 41 xyz'
-    # # text = 'ABCDEFG'
-    # # text = 'I'
-    # text = 'it was the best of times, it was the worst of times.'
-    # text = 'Filter common words from documents'
-    # key= 13
-    # code = encrypt(text,key)
-    # print('Original text', text)
-    # print('the code is: ', code )
-    # # decode = decryp(code, key)
-    # # print (decode)
-    # # print(decryp(code))
-    # print(crack_code(code))
-    # text = 'some uh when jds said'
-    # print(is_broken(text))
-#It dont found, add 0 when founded_words = num_plain_list
