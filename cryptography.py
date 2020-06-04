@@ -73,19 +73,23 @@ def is_broken(plain):
         word = word.replace('.','')
         word.strip()
         word.lower()
-        print (word)
         if word in word_list: 
-            print ('found' ,word)
-            founded_words += 1                
+            # print ('found' ,word)
+            founded_words += 1        
 
-    return f'Only {founded_words} from {num_plain_list} words where recognized. There is a {founded_words/num_plain_list} chance of being broken.'
+    if founded_words == num_plain_list:
+        porcentage = 0
+    else:
+        porcentage = int((founded_words/num_plain_list)*100)
+
+    return f'Only {founded_words} from {num_plain_list} words where recognized. There is a { porcentage } % chance of being broken.'
 
 
-if __name__ == "__main__":
-    # # text = 'Iris Leal is my name 41 xyz'
+# if __name__ == "__main__":
+#     text = 'Iris Leal is my name 41 xyz'
     # # text = 'ABCDEFG'
     # # text = 'I'
-    # text = 'It was the best of times, it was the worst of times.'
+    # text = 'it was the best of times, it was the worst of times.'
     # text = 'Filter common words from documents'
     # key= 13
     # code = encrypt(text,key)
@@ -97,4 +101,4 @@ if __name__ == "__main__":
     # print(crack_code(code))
     # text = 'some uh when jds said'
     # print(is_broken(text))
-#It dont found
+#It dont found, add 0 when founded_words = num_plain_list
